@@ -123,5 +123,81 @@ public:
     }
 };
 
+class Queue{
+private:
+    Node* top;
+    int count;
+public:
+    Queue(){
+        this->top = nullptr;
+        this->count = 0;
+    }
+
+    bool isEmpty(){
+        if(top == nullptr && count == 0){
+            return true;
+        }
+        return false;
+    }
+
+    void enqueue(int data){
+        Node* nodeToInsert = new Node(data);
+        if (top != nullptr) {
+            nodeToInsert->setNext(top);
+        }
+        top = nodeToInsert;
+        count++;
+    }
+
+    void dequeue(){
+        Node* temp = top;
+        int curr = 1;
+        while(curr < count-1){
+            temp = temp ->getNext();
+            curr++;
+        }
+        Node* tail = temp->getNext();
+        delete tail;
+        temp->setNext(nullptr);
+        count--;
+    }
+
+    void printQueue(){
+        if (isEmpty()) {
+            cout << "Stack is empty" << endl;
+            return;
+        }
+
+        Node* temp = top;
+        while (temp != nullptr) {
+            cout << temp->getData() << " ";
+            temp = temp->getNext();
+        }
+        cout << endl;
+    }
+
+    int size(){
+        return count;
+    }
+
+    void clear(){
+        while (top != nullptr) {
+            Node* temp = top;
+            top = top->getNext();
+            delete temp;
+        }
+        count = 0;
+    }
+
+    ~Queue(){
+        while (top != nullptr) {
+            Node* temp = top;
+            top = top->getNext();
+            delete temp;
+        }
+    }
+
+};
+
 
 #endif

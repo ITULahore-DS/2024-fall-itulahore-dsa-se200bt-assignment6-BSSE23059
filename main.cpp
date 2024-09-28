@@ -4,17 +4,17 @@ using namespace std;
 
 int main(){
 
-    Stack myStack;
+    Queue myQueue;
 
-    // Push elements onto the stack
-    myStack.push(10);
-    myStack.push(20);
-    myStack.push(30);
+    myQueue.enqueue(10);
+    myQueue.enqueue(20);
+    myQueue.enqueue(30);
 
-    myStack.clear();
-    myStack.printStack();
-    cout << "Empty Status :" << myStack.isEmpty() << endl;
-    cout << "Size of Stack :" << myStack.size() << endl;
+    myQueue.printQueue();
+
+    myQueue.dequeue();
+
+    myQueue.printQueue();
 
 
     
